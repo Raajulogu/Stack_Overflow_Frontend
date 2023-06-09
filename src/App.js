@@ -32,7 +32,7 @@ function App() {
         />}
        />
 
-        <Route path="/answer/:id/:token"
+        <Route path="/answer/:id"
         element={<Answer
           userData={userData}
           setUserData={setUserData}

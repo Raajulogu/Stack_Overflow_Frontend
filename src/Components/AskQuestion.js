@@ -19,7 +19,6 @@ const navigate = useNavigate()
             questionTags:tags,
             name:name
         }
-        console.log(newQues)
         const res = await fetch(`https://stack-overflow-clone-six.vercel.app/api/question/ask`, {
             method:"POST",
             body:JSON.stringify(newQues),
@@ -36,7 +35,6 @@ const navigate = useNavigate()
        }
        setUserData([...userData, data.data])
        setSucessMessage(data.message)
-       navigate("/user")
     }
 
     return (

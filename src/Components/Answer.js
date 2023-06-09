@@ -6,13 +6,14 @@ const Answer = ({userData, setUserData}) =>{
     const [body, setBody] = useState("")
     const [error, setError] = useState("")
     const [sucessMsg, setSucessMessage] = useState("")
-    const {id, token} = useParams();
+    const {id} = useParams();
     const navigate = useNavigate()
-
+    
     async function handleanswers(){
-
+        let token=localStorage.getItem("token")
+        
         const answer = {
-            body
+            answer:body
             }
 
         const res = await fetch(`https://stack-overflow-clone-six.vercel.app/api/question/answer/${id}`, {
@@ -25,13 +26,11 @@ const Answer = ({userData, setUserData}) =>{
         });
 
          const data = await res.json();
+         console.log(answer)
          if(!data.data){
             setError(data.message)
              setSucessMessage("")
          }
-        //  const userindex = userData?.findIndex((data, idx)=>data._id === id);
-        //  userData[userindex] = data.data;
-        //   await setUserData([...userData])
           setSucessMessage(data.message)
     }
 

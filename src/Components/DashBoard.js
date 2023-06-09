@@ -51,7 +51,7 @@ const Dashboard = () =>{
                      <h2 className="ans_head">Answers: </h2>
                      <Asnwers answer={data.answers}/>
                     <br/>
-                     <Button onClick={()=>navigate(`/answer/${data._id}/${tokenId}`)}>Post Your Answer</Button>
+                     <Button onClick={()=>navigate(`/answer/${data._id}`)}>Post Your Answer</Button>
                     <br/>
                    </Paper>
                 ))}
@@ -69,7 +69,6 @@ const Dashboard = () =>{
 }
 
 const Asnwers=({answer})=>{
-    console.log(answer)
     return(
         <div className="answer_container">
             {answer && (
