@@ -28,16 +28,6 @@ function handleLogut(){
       aria-label="dashboard" sx={{ mr: 2 }}>  
      Dashboard
     </IconButton>
-
-    <IconButton 
-    edge="end" 
-    color="inherit"
-     aria-label="students"
-     onClick={()=>navigate("/user")}
-      sx={{ mr: 2 }}>  
-       MyAccount
-    </IconButton>
-
    {!localStorage.getItem('token')&&
    (
     <span>
