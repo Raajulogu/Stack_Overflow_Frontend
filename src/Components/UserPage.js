@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react"
 import Base from "../Base/Base"
 import { Button,  Paper, Typography } from "@mui/material"
 import { useNavigate } from "react-router-dom"
-const UserPage = ({userData, setUserData}) =>{
+const UserPage = () =>{
     const navigate = useNavigate()
+    const [userData, setUserData] = useState([]);
     const [error, setError] = useState("");
     const [tokenId, setTokenId]= useState("");
     useEffect(()=>{
@@ -25,7 +26,6 @@ const UserPage = ({userData, setUserData}) =>{
             
          }
          setUserData(data.data)
-         console.log(userData)
         }
         fetchUserData()
     }, [])
@@ -33,17 +33,7 @@ const UserPage = ({userData, setUserData}) =>{
 
     return (
         <Base>
-        <div>
-        <Button
-    edge="end" 
-    color="inherit" 
-    aria-label="Ask Question" 
-    onClick={()=>navigate(`/ask/${tokenId}`)}
-    sx={{ mr: 2 }}>  
-     Ask Question
-    </Button>
-        </div>
-
+        
         {userData && (
              <div>
                 {userData?.map((data, index)=>(

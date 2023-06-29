@@ -16,11 +16,34 @@
   background-color: aliceblue;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   padding:5px;
 }
+.ask-question-button{
+  margin-left: 30%;
+}
+.question-box{
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  justify-content: flex-end;
+}
+.left-side{
+  width: 60%;
+}
+.right-side{
+  width: 20%;
+  background-color: rgb(255, 242, 200);
+  height:600px;
+  margin-left: 5%;
+}
+#rightside-content{
+  text-align: justify;
+  padding:0px 3%;
+}
 .all_questions{
-  width:70%;
-  padding:10px;
+  width:100%;
+  padding:0px 10px;
 }
 .questions{
   border: 1 px solid black;

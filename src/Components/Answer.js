@@ -2,7 +2,7 @@ import React, {  useState } from "react"
 import Base from "../Base/Base"
 import { useNavigate, useParams } from "react-router-dom"
 import { Button, TextField, Typography } from "@mui/material"
-const Answer = ({userData, setUserData}) =>{
+const Answer = () =>{
     const [body, setBody] = useState("")
     const [error, setError] = useState("")
     const [sucessMsg, setSucessMessage] = useState("")
@@ -26,12 +26,11 @@ const Answer = ({userData, setUserData}) =>{
         });
 
          const data = await res.json();
-         console.log(answer)
+         console.log(data)
          if(!data.data){
             setError(data.message)
              setSucessMessage("")
          }
-          setSucessMessage(data.message)
     }
 
     return (
@@ -48,14 +47,12 @@ const Answer = ({userData, setUserData}) =>{
         />
       
 
-        <Button
-        type="submit"        variant ="contained"
+        <Button     variant ="contained"
         onClick={handleanswers}
         >Post Answer</Button>
 
 
-       <Button
-        type="submit"        variant ="contained"
+       <Button       variant ="contained"
         onClick={()=>navigate("/")}
         >Home</Button>
 

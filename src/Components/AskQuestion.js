@@ -1,18 +1,17 @@
 import React, { useState } from "react"
 import Base from "../Base/Base"
 import { Button, TextField, Typography } from "@mui/material"
-import { useNavigate, useParams } from "react-router-dom"
-const AskQuestion = ({userData, setUserData}) =>{
-     const {token} = useParams();
+const AskQuestion = () =>{
      const [name,setName]=useState("")
      const [title, setTitle] = useState("")
      const [body, setBody] = useState("")
      const [tags, setTags] = useState("")
     const [error, setError] = useState("")
     const [sucessMsg, setSucessMessage] = useState("")
-
-const navigate = useNavigate()
+    let token=localStorage.getItem("token")
+    console.log(token)
     async function postNewQuestion(){
+      
         const newQues = {
             questionTitle:title,
             questionBody:body,
@@ -33,7 +32,6 @@ const navigate = useNavigate()
           setError(data.message)
           setSucessMessage("")
        }
-       setUserData([...userData, data.data])
        setSucessMessage(data.message)
     }
 
@@ -69,20 +67,16 @@ const navigate = useNavigate()
         
       
 
-        <Button
-        type="submit"        variant ="contained"
+        <Button      variant ="contained"
         onClick={()=>postNewQuestion()}
         >Post Question</Button>
-
+        <br/>
        {error? 
-        <Typography color={"danger"}>
+        <Typography color={"crimson"}>
            {error}
         </Typography> : "" }
 
-        {sucessMsg? 
-        <Typography color={"danger"}>
-           {sucessMsg}
-        </Typography> : "" }
+
           </form>
         </div>
         </Base>

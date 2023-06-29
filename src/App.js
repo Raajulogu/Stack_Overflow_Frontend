@@ -27,22 +27,16 @@ function App() {
 
     <Route path="/ask/:token"
         element={<AskQuestion
-          userData={userData}
-          setUserData={setUserData}
         />}
        />
 
         <Route path="/answer/:id"
         element={<Answer
-          userData={userData}
-          setUserData={setUserData}
         />}
        />
 
       <Route path="/user"
         element={<UserPage
-          userData={userData}
-          setUserData={setUserData}
         />}
        />
 

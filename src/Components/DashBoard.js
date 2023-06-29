@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import Base from "../Base/Base"
 import { useNavigate } from "react-router-dom"
 import { Button, Paper, Typography } from "@mui/material";
+import Rightsidebar from "./Rightsidebar";
 const Dashboard = () =>{
     const [questions, setQuestions] = useState([]);
     const [error, setError] = useState("");
@@ -33,7 +34,21 @@ const Dashboard = () =>{
     return (
         <Base>
         <div className="questions_container">
-        {questions && (
+        <div className="ask-question-button">
+            <Button
+            edge="end" 
+            variant="contained" 
+            aria-label="Ask Question" 
+            onClick={()=>navigate(`/ask/${tokenId}`)}
+            sx={{ mr: 2 }}>  
+            Ask Question
+            </Button>
+        </div>
+        <br/>
+
+        <div className="row question-box">
+            <div className="col-md-6 left-side">
+            {questions && (
              <div className="all_questions">
                 {questions?.map((data, index)=>(
                    <Paper 
@@ -57,6 +72,11 @@ const Dashboard = () =>{
                 ))}
              </div>
         )}
+            </div>
+            <div className="right-side">
+                <Rightsidebar/>
+            </div>
+        </div>
         </div>
     
 
