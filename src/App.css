@@ -1,6 +1,9 @@
 .App {
   text-align: center;
 }
+.main_head{
+  width:1905px;
+}
 .main-container{
   background-color: white;
   color: black;
@@ -24,6 +27,7 @@
   justify-content: space-between;
   width: 90%;
   height:100%;
+  
 }
 .ask-question-button{
   display: flex;
@@ -32,17 +36,22 @@
   width:60% ;
 }
 .search-container{
+  width:60%;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
+.search-input{
+  width: 70%;
+}
 .bi-search{
+  width:30px;
   height:85%;
   padding: .5%;
   background-color: rgb(201, 202, 202);
 }
 .left-side{
-  width: 60%;
+  width: 50%;
   margin-left: 5%;
   height:100%;
 }

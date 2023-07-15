@@ -92,13 +92,14 @@ const Dashboard = () =>{
     return (
         <Base>
         
-        <div className="questions_container">
-        <div className="ask-question-button">
+        <div className="container-fluid questions_container">
+        <div className="row ask-question-button">
             <div className="search-container">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
             </svg>
             <input
+            className="search-input"
             placeholder="Search"
             value={finder}
             onChange={e=>setFinder(e.target.value)}
@@ -116,7 +117,7 @@ const Dashboard = () =>{
         </div>
         <br/>
         <div className="row question-box">
-            <div className="col-md-6 left-side">
+            <div className="col left-side">
             {questions && (
              <div className="all_questions">
                 {finder.length<0? questions?.map((data, index)=>(
@@ -145,9 +146,7 @@ const Dashboard = () =>{
                     setPosted(data.name);setDate(data.date);setQues(data.questionBody)
                      setId(data._id);setVote(data.votes)}}
                     >
-                        {data.questionBody.includes(finder.toUpperCase())||
-                        data.questionBody.includes(finder.toLowerCase())||
-                        data.questionBody.includes(finder)
+                        {data.questionBody.toLowerCase().includes(finder.toLowerCase())
                         ?
                         <div>
                             <h3 className="question_head">Question</h3>
@@ -165,7 +164,7 @@ const Dashboard = () =>{
              </div>
         )}
             </div>
-            <div className="right-side" id={show}>
+            <div className="col right-side" id={show}>
                 <div className="right-side-top">
                 <div className="right-side-1">
                 <h2 className="ans_head">
