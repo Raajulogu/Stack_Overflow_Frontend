@@ -9,28 +9,35 @@ const Answer = () =>{
     const {id} = useParams();
     const navigate = useNavigate()
     
+    //Posting the answer to the server
     async function handleanswers(){
         let token=localStorage.getItem("token")
         
         const answer = {
             answer:body
             }
-
-        const res = await fetch(`https://stack-overflow-clone-six.vercel.app/api/question/answer/${id}`, {
+            if(body!==""){
+                const res = await fetch(`https://stack-overflow-clone-six.vercel.app/api/question/answer/${id}`, {
             method:"PUT",
             body:JSON.stringify(answer),
             headers: {
                 "Content-Type":"application/json",
                 "x-auth": token,
             }
-        });
+            });
 
-         const data = await res.json();
-         console.log(data)
-         if(!data.data){
-            setError(data.message)
-             setSucessMessage("")
-         }
+            const data = await res.json();
+            console.log(data)
+            if(!data.data){
+                setError(data.message)
+                setSucessMessage("")
+            }
+            navigate("/")
+            }
+            else{
+                setError("Please Fill enter your answer")
+            }
+        
     }
 
     return (
@@ -56,8 +63,8 @@ const Answer = () =>{
         onClick={()=>navigate("/")}
         >Home</Button>
 
-       {error? 
-        <Typography color={"danger"}>
+{error? 
+        <Typography color={"crimson"}>
            {error}
         </Typography> : "" }
 

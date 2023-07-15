@@ -23,7 +23,7 @@ const handleLogin = async ()=>{
    }); 
    
    const data = await response.json()
-   console.log(data.token)
+   
    if(data.token) {
        setError("")
       localStorage.setItem("token", data.token)

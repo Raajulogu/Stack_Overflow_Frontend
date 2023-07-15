@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import Base from "../Base/Base"
 import { Button, TextField, Typography } from "@mui/material"
+import { useNavigate } from "react-router-dom"
 const AskQuestion = () =>{
      const [name,setName]=useState("")
      const [title, setTitle] = useState("")
@@ -8,8 +9,10 @@ const AskQuestion = () =>{
      const [tags, setTags] = useState("")
     const [error, setError] = useState("")
     const [sucessMsg, setSucessMessage] = useState("")
+    let navigate=useNavigate();
     let token=localStorage.getItem("token")
-    console.log(token)
+    
+    //Post a New question in server
     async function postNewQuestion(){
       
         const newQues = {
@@ -18,7 +21,11 @@ const AskQuestion = () =>{
             questionTags:tags,
             name:name
         }
-        const res = await fetch(`https://stack-overflow-clone-six.vercel.app/api/question/ask`, {
+        if(title===""||body===""||tags===""||name===""){
+          setError("Please Fill all the Fields")
+        }
+        else{
+          const res = await fetch(`https://stack-overflow-clone-six.vercel.app/api/question/ask`, {
             method:"POST",
             body:JSON.stringify(newQues),
             headers: {
@@ -32,7 +39,13 @@ const AskQuestion = () =>{
           setError(data.message)
           setSucessMessage("")
        }
+       else{
+        navigate("/")
+       }
        setSucessMessage(data.message)
+        }
+        
+       
     }
 
     return (
@@ -40,17 +53,20 @@ const AskQuestion = () =>{
         <div>
           <form className="question_form">
           <TextField label="Name" variant="outlined" fullWidth sx={{ m: 1 }}
+          required
         placeholder="Enter the your name"
         type="text"
         value={name}
         onChange={(e)=>setName(e.target.value)}
         />
           <TextField label="Title" variant="outlined" fullWidth sx={{ m: 1 }}
+          required
         placeholder="Enter the Title"
         value={title}
         onChange={(e)=>setTitle(e.target.value)}
         type="text"/>
          <TextField label="Body" 
+         required
        variant="outlined" fullWidth sx={{ m: 1}}
        inputProps={{sx:{height: 100}}}
         placeholder="Enter the Body of the  questions"
@@ -59,6 +75,7 @@ const AskQuestion = () =>{
         onChange={(e)=>setBody(e.target.value)}
         />
         <TextField label="Tags" variant="outlined" fullWidth sx={{ m: 1 }}
+        required
         placeholder="Enter the tags"
         type="text"
         value={tags}

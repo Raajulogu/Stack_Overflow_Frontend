@@ -3,15 +3,16 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 function Base({title, description, children}) {
-//const history = useHistory() v5
+
 const navigate = useNavigate()
+//Logout function
 function handleLogut(){
     localStorage.removeItem("token")
     navigate("/login")
 }
   return (
     <div className='main_head'>
-      <header>
+      <header className='fixed-bar'>
       <nav >
       <AppBar position="static">
   <Toolbar className='main-container' variant="dense">
@@ -27,6 +28,13 @@ function handleLogut(){
      onClick={()=>navigate("/")}
       aria-label="dashboard" sx={{ mr: 2 }}>  
      Dashboard
+    </IconButton>
+    <IconButton 
+    edge="end"
+     color="inherit"
+     onClick={()=>navigate("/company")}
+      aria-label="dashboard" sx={{ mr: 2 }}>  
+     Companies
     </IconButton>
    {!localStorage.getItem('token')&&
    (
@@ -70,7 +78,7 @@ function handleLogut(){
 </AppBar>
         </nav>
       </header>
-      <main>
+      <main className='main-content'>
           <h1>{title}</h1> 
           <h4>{description}</h4>
           <div className='contents'>

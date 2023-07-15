@@ -3,19 +3,21 @@ import { Route, Routes } from 'react-router-dom';
 import Dashboard from './Components/DashBoard';
 import LoginPage from './Components/LoginPage';
 import SignupPage from './Components/SignupPage';
-import UserPage from './Components/UserPage';
-import { useState } from 'react';
 import AskQuestion from './Components/AskQuestion';
 import Answer from './Components/Answer';
+import Company from './Components/Company';
 
 function App() {
-  const [userData, setUserData] = useState([]);
   return (
     <div className="App">
          <Routes>
 
        <Route exact path ="/"
        element={<Dashboard/>}/>
+
+        <Route path="/company"
+        element={<Company/>}
+       />
 
        <Route path="/login"
         element={<LoginPage/>}
@@ -26,18 +28,11 @@ function App() {
        /> 
 
     <Route path="/ask/:token"
-        element={<AskQuestion
-        />}
+        element={<AskQuestion/>}
        />
 
         <Route path="/answer/:id"
-        element={<Answer
-        />}
-       />
-
-      <Route path="/user"
-        element={<UserPage
-        />}
+        element={<Answer/>}
        />
 
          </Routes>
