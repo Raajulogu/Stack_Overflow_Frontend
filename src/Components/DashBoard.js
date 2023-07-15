@@ -146,7 +146,9 @@ const Dashboard = () =>{
                      setId(data._id);setVote(data.votes)}}
                     >
                         {data.questionBody.includes(finder.toUpperCase())||
-                        data.questionBody.includes(finder.toLowerCase()) ?
+                        data.questionBody.includes(finder.toLowerCase())||
+                        data.questionBody.includes(finder)
+                        ?
                         <div>
                             <h3 className="question_head">Question</h3>
                         <p className="user_questions">{data.questionBody}</p>
