@@ -117,7 +117,7 @@ const Dashboard = () =>{
         </div>
         <br/>
         <div className="row question-box">
-            <div className="col left-side">
+            <div className="col-md-6 left-side">
             {questions && (
              <div className="all_questions">
                 {finder.length<0? questions?.map((data, index)=>(
