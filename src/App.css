@@ -4,6 +4,9 @@
 .main_head{
   width:1905px;
 }
+.fixed-bar{
+  width:100vw;
+}
 .main-container{
   background-color: white;
   color: black;
